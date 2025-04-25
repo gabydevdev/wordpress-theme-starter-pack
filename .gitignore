@@ -1,35 +1,29 @@
-#  WordPress Core
-wp-config.php
-wp-content/uploads/
-wp-content/cache/
-wp-content/plugins/*
-!wp-content/plugins/your-theme-name/  #  Keep your theme
-wp-content/themes/*
-!wp-content/themes/your-theme-name/    #  Keep your theme
-wp-content/upgrade/
-debug.log
-
 #  Dependencies
-node_modules/
-package-lock.json
-yarn.lock
+node_modules/        #  npm
+package-lock.json    #  npm
+yarn.lock            #  Yarn
+npm-debug.log        #  npm debug logs
+webpack.cache.js
+
+#  Composer
+vendor/            #  Composer dependencies
+composer.lock      #  (Usually tracked, but depends on workflow)
 
 #  Development
-.DS_Store
-*.map
-*.log
-*.tmp
-*.swp
+.DS_Store          #  macOS
+*.map              #  Source maps
+*.log              #  Log files
+*.tmp              #  Temporary files
+*.swp              #  Swap files
 
 #  Production
-*.po
-*.mo
+*.po               #  Translation files
+*.mo               #  Translation files
 
 #  Gulp and Webpack
-dist/
-.cache
+dist/              #  Build output
+.cache             #  Cache directories
 
-#  IDE and OS
-.idea/
-.vscode/
-Thumbs.db
+#  IDE
+.idea/            #  PhpStorm/WebStorm
+.vscode/          #  Visual Studio Code
