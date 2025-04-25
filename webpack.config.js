@@ -14,7 +14,8 @@ module.exports = (env, argv) => {
     },
     output: {
       filename: '[name].bundle.js',
-      path: path.resolve(__dirname, 'assets/js/dist')
+      path: path.resolve(__dirname, 'assets/js/dist'),
+      clean: true,
     },
     module: {
       rules: [
@@ -34,40 +35,12 @@ module.exports = (env, argv) => {
           }
         },
         {
-          test: /\.(sa|sc|c)ss$/,
+          test: /\.scss$/,
           use: [
-            isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: isDevelopment,
-                importLoaders: 2
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: isDevelopment,
-                postcssOptions: {
-                  plugins: [
-                    require('autoprefixer'),
-                    require('postcss-preset-env')({
-                      stage: 3,
-                      features: {
-                        'nesting-rules': true
-                      }
-                    })
-                  ]
-                }
-              }
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: isDevelopment
-              }
-            }
-          ]
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            'sass-loader',
+          ],
         },
         {
           test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -113,7 +86,20 @@ module.exports = (env, argv) => {
         })
       ]
     },
-    devtool: isDevelopment ? 'eval-source-map' : false,
+    devServer: {
+      static: {
+        directory: path.join(__dirname, ''),
+      },
+      hot: true,
+      port: 3000,
+      proxy: {
+        '/': {
+          target: process.env.WP_HOME || 'http://localhost:10000',
+          changeOrigin: true,
+        },
+      },
+    },
+    devtool: isDevelopment ? 'eval-source-map' : 'source-map',
     stats: {
       children: false,
       modules: false

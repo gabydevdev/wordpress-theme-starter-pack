@@ -1,0 +1,16 @@
+{
+    "extends": [
+        "stylelint-config-wordpress",
+        "stylelint-config-prettier"
+    ],
+    "plugins": [
+        "stylelint-prettier"
+    ],
+    "rules": {
+        "prettier/prettier": true,
+        "no-descending-specificity": null,
+        "selector-class-pattern": null,
+        "font-family-no-missing-generic-family-keyword": null,
+        "no-duplicate-selectors": null
+    }
+} 
