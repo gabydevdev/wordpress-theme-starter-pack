@@ -1,9 +1,11 @@
 # Dependencies
 node_modules/
+vendor/
 
 # Build output
 dist/
 package-lock.json
+composer.lock
 
 # Build files
 assets/css/*.css
