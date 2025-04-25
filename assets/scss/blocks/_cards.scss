@@ -1,26 +1,68 @@
-.block-cards {
-  @include section-spacing;
+@use '../variables' as *;
+@use '../mixins' as *;
+@import 'block-options';
 
-  .card {
-    height: 100%;
-    transition: transform 0.2s ease;
+.wptsp-cards {
+  @extend %block-base;
+  padding: $section-spacing 0;
 
-    &:hover {
-      transform: translateY(-5px);
+  &__grid {
+    display: grid;
+    gap: $grid-gutter-width;
+    grid-template-columns: repeat(1, 1fr);
+
+    @include media-breakpoint-up(md) {
+      grid-template-columns: repeat(var(--card-columns, 3), 1fr);
     }
   }
 
-  .card-img-top {
-    height: 200px;
-    object-fit: cover;
+  &__item {
+    background: $white;
+    border-radius: $border-radius;
+    overflow: hidden;
+    box-shadow: $box-shadow;
   }
 
-  .card-title {
-    font-size: 1.25rem;
+  &__image {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    padding: $spacer * 2;
+  }
+
+  &__title {
     margin-bottom: $spacer;
   }
 
-  .card-text {
-    color: $secondary;
+  &__text {
+    margin-bottom: $spacer * 1.5;
+  }
+
+  // Modifiers
+  &--minimal {
+    .wptsp-cards__item {
+      box-shadow: none;
+      border: 1px solid $border-color;
+    }
+  }
+
+  &--featured {
+    .wptsp-cards__item:first-child {
+      @include media-breakpoint-up(md) {
+        grid-column: span 2;
+
+        .wptsp-cards__content {
+          padding: $spacer * 3;
+        }
+      }
+    }
   }
 }

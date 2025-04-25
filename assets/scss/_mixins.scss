@@ -1,41 +1,61 @@
-// Responsive breakpoint mixin
-@mixin breakpoint($point) {
-  @if $point == sm {
-    @media (min-width: 576px) {
-      @content;
-    }
-  } @else if $point == md {
-    @media (min-width: 768px) {
-      @content;
-    }
-  } @else if $point == lg {
-    @media (min-width: 992px) {
-      @content;
-    }
-  } @else if $point == xl {
-    @media (min-width: 1200px) {
-      @content;
-    }
-  } @else if $point == xxl {
-    @media (min-width: 1400px) {
+// Responsive breakpoint mixins (using Bootstrap breakpoints)
+@mixin media-breakpoint-up($breakpoint) {
+  @if map-has-key($grid-breakpoints, $breakpoint) {
+    @media (min-width: map-get($grid-breakpoints, $breakpoint)) {
       @content;
     }
   }
 }
 
-// Container padding
-@mixin container-padding {
-  padding-left: $spacer;
-  padding-right: $spacer;
-
-  @include breakpoint(md) {
-    padding-left: $spacer * 2;
-    padding-right: $spacer * 2;
+@mixin media-breakpoint-down($breakpoint) {
+  @if map-has-key($grid-breakpoints, $breakpoint) {
+    @media (max-width: map-get($grid-breakpoints, $breakpoint) - 0.02px) {
+      @content;
+    }
   }
 }
 
-// Section spacing
-@mixin section-spacing {
-  padding-top: $section-spacing;
-  padding-bottom: $section-spacing;
+// Background overlay mixin
+@mixin overlay($color: rgba(0, 0, 0, 0.5), $z-index: 1) {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $color;
+    z-index: $z-index;
+  }
+}
+
+// Aspect ratio mixin
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    padding-bottom: ($height / $width) * 100%;
+  }
+
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Container mixin
+@mixin container($max-width: map-get($container-max-widths, 'xl')) {
+  width: 100%;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $grid-gutter-width * 0.5;
+  padding-right: $grid-gutter-width * 0.5;
 }

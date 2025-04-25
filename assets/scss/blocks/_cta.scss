@@ -1,28 +1,47 @@
-.block-cta {
-  @include section-spacing;
-  background-color: $primary;
-  color: #fff;
+@use '../variables' as *;
+@use '../mixins' as *;
+@import 'block-options';
 
-  .cta-content {
+.wptsp-cta {
+  @extend %block-base;
+  padding: $section-spacing 0;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: $spacer * 2;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__title {
+    margin-bottom: $spacer;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: $spacer;
+    flex-wrap: wrap;
+  }
+
+  // Modifiers
+  &--centered {
     text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
+
+    .wptsp-cta__buttons {
+      justify-content: center;
+    }
   }
 
-  .cta-title {
-    font-size: 2.5rem;
-    margin-bottom: $spacer * 2;
-  }
-
-  .cta-text {
-    font-size: 1.25rem;
-    margin-bottom: $spacer * 2;
-    opacity: 0.9;
-  }
-
-  .btn-outline-light {
-    &:hover {
-      color: $primary;
+  &--split {
+    @include media-breakpoint-up(md) {
+      .wptsp-cta__container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
     }
   }
 }

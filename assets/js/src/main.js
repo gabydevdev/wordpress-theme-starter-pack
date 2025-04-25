@@ -1,13 +1,25 @@
-// Import Bootstrap JavaScript
+// Import Bootstrap and block utilities
 import 'bootstrap';
+import { initBlocks } from './blocks/utils';
 
-// Initialize Bootstrap components
+// Initialize animations for blocks with .has-animation class
+const initBlockAnimations = () => {
+  const animatedBlocks = document.querySelectorAll('.has-animation');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  animatedBlocks.forEach(block => observer.observe(block));
+};
+
+// Initialize all functionality when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  // Enable tooltips
-  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-  tooltipTriggerList.map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-
-  // Enable popovers
-  const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-  popoverTriggerList.map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+  initBlocks();
+  initBlockAnimations();
 });

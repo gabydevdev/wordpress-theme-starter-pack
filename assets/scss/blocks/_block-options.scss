@@ -1,0 +1,30 @@
+// Shared block options styles
+%block-base {
+  // Alignment classes
+  &.align-left { text-align: left; }
+  &.align-center { text-align: center; }
+  &.align-right { text-align: right; }
+
+  // Animation class
+  &.has-animation {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+    &.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  // Color utility classes
+  @each $name, $color in $theme-colors {
+    &.has-#{$name}-color {
+      color: $color;
+    }
+
+    &.has-#{$name}-background {
+      background-color: $color;
+    }
+  }
+}

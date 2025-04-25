@@ -1,53 +1,14 @@
-// Import Bootstrap
-@use '../../node_modules/bootstrap/scss/bootstrap' as *;
-
-// Base styles
+// Base styles and utilities
 @use 'variables' as *;
 @use 'mixins' as *;
 
-// Components
-@use 'components/header';
-@use 'components/footer';
-@use 'components/navigation';
+// Import Bootstrap
+@import "~bootstrap/scss/bootstrap";
 
-// Blocks
-@use 'blocks/hero';
-@use 'blocks/cards';
-@use 'blocks/cta';
-@use 'blocks/text-block';
-@use 'blocks/video';
+// Import components
+@import 'components/footer';
+@import 'components/header';
+@import 'components/navigation';
 
-// Global styles
-body {
-  font-family: $font-family-base;
-  color: $secondary;
-}
-
-.wp-block {
-  max-width: 1200px;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-// Typography
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: $primary;
-  margin-bottom: $spacer;
-}
-
-// Utilities
-.section-padding {
-  @include section-spacing;
-}
-
-.container-padding {
-  @include container-padding;
-}
+// Import block styles
+@import 'blocks';

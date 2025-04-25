@@ -1,38 +1,28 @@
-.block-video {
-  @include section-spacing;
+@use '../variables' as *;
+@use '../mixins' as *;
+@import 'block-options';
 
-  .video-container {
+.video-section {
+  @extend %block-base;
+  padding: $section-spacing 0;
+
+  .video-wrapper {
     position: relative;
-    padding-bottom: 56.25%; // 16:9 aspect ratio
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
+    width: 100%;
+    max-width: var(--video-width, 1200px);
     margin: 0 auto;
+    border-radius: $border-radius;
+    overflow: hidden;
 
-    iframe,
     video {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
-      height: 100%;
-      border-radius: 0.5rem;
+      display: block;
     }
   }
 
-  .video-content {
-    max-width: 800px;
-    margin: $spacer * 2 auto 0;
-    text-align: center;
-  }
-
-  .video-title {
-    font-size: 1.5rem;
-    margin-bottom: $spacer;
-    color: $primary;
-  }
-
-  .video-description {
-    color: $secondary;
+  .video-caption {
+    margin-top: $spacer;
+    font-size: $font-size-sm;
+    opacity: 0.8;
   }
 }

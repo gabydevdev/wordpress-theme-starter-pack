@@ -1,40 +1,32 @@
-.block-hero {
-  position: relative;
-  min-height: 500px;
-  display: flex;
-  align-items: center;
+@use '../variables' as *;
+@use '../mixins' as *;
+@import 'block-options';
+
+.wptsp-hero {
+  @extend %block-base;
+  padding: $section-spacing 0;
   background-size: cover;
   background-position: center;
-  color: #fff;
+  position: relative;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-  }
-
-  .hero-content {
+  &__container {
     position: relative;
-    z-index: 1;
-    max-width: 800px;
+    z-index: 2;
   }
 
-  .hero-title {
-    font-size: 3rem;
+  &__title {
     margin-bottom: $spacer * 2;
-
-    @include breakpoint(md) {
-      font-size: 4rem;
-    }
   }
 
-  .hero-text {
-    font-size: 1.25rem;
-    margin-bottom: $spacer * 2;
-    opacity: 0.9;
+  &__description {
+    margin-bottom: $spacer * 3;
+    font-size: $font-size-lg;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: $spacer;
+    justify-content: var(--align, center);
+    flex-wrap: wrap;
   }
 }
