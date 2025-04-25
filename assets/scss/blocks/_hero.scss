@@ -1,0 +1,40 @@
+.block-hero {
+  position: relative;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    margin-bottom: $spacer * 2;
+
+    @include breakpoint(md) {
+      font-size: 4rem;
+    }
+  }
+
+  .hero-text {
+    font-size: 1.25rem;
+    margin-bottom: $spacer * 2;
+    opacity: 0.9;
+  }
+}

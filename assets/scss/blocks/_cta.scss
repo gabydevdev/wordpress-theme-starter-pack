@@ -1,0 +1,28 @@
+.block-cta {
+  @include section-spacing;
+  background-color: $primary;
+  color: #fff;
+
+  .cta-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+    margin-bottom: $spacer * 2;
+  }
+
+  .cta-text {
+    font-size: 1.25rem;
+    margin-bottom: $spacer * 2;
+    opacity: 0.9;
+  }
+
+  .btn-outline-light {
+    &:hover {
+      color: $primary;
+    }
+  }
+}

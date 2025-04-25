@@ -1,0 +1,25 @@
+.site-header {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .navbar {
+    padding: $spacer 0;
+  }
+
+  .navbar-brand {
+    img {
+      max-height: 40px;
+      width: auto;
+    }
+  }
+
+  .nav-link {
+    color: $secondary;
+    transition: color 0.2s ease;
+
+    &:hover,
+    &:focus {
+      color: $primary;
+    }
+  }
+}

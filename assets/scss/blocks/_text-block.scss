@@ -1,0 +1,28 @@
+.block-text {
+  @include section-spacing;
+
+  .text-content {
+    max-width: 800px;
+    margin: 0 auto;
+
+    &.text-center {
+      text-align: center;
+    }
+  }
+
+  .text-title {
+    font-size: 2rem;
+    margin-bottom: $spacer * 1.5;
+    color: $primary;
+  }
+
+  .text-body {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: $secondary;
+
+    p {
+      margin-bottom: $spacer * 1.5;
+    }
+  }
+}
