@@ -5,17 +5,18 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run dev",
-    "dev": "concurrently \"webpack --watch --mode=development\" \"sass --watch assets/scss:assets/css\"",
-    "build": "cross-env NODE_ENV=production webpack --mode=production && sass assets/scss:assets/css --style=compressed",
+    "dev": "cross-env NODE_ENV=development webpack serve --mode=development",
+    "build": "cross-env NODE_ENV=production webpack --mode=production",
     "lint:js": "eslint assets/js/src/**/*.js",
     "lint:scss": "stylelint assets/scss/**/*.scss",
     "format": "prettier --write \"**/*.{js,scss,json,md,php}\"",
     "format:check": "prettier --check \"**/*.{js,scss,json,md,php}\"",
     "wp-env": "wp-env",
-    "wp-start": "wp-env start",
+    "wp-start": "cross-env WP_HOME=http://localhost:10000 wp-env start",
     "wp-stop": "wp-env stop",
     "blocks:build": "wp-scripts build",
-    "blocks:start": "wp-scripts start"
+    "blocks:start": "wp-scripts start",
+    "clean": "rimraf assets/js/dist assets/css/*.css assets/css/*.map"
   },
   "browserslist": [
     "> 1%",

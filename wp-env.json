@@ -1,0 +1,17 @@
+{
+  "core": "WordPress/WordPress#trunk",
+  "plugins": [
+    "https://downloads.wordpress.org/plugin/advanced-custom-fields.zip"
+  ],
+  "themes": [
+    "."
+  ],
+  "port": 10000,
+  "config": {
+    "WP_DEBUG": true,
+    "WP_DEBUG_LOG": true,
+    "WP_DEBUG_DISPLAY": true,
+    "SCRIPT_DEBUG": true,
+    "WP_ENVIRONMENT_TYPE": "development"
+  }
+} 

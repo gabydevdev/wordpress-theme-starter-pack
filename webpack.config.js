@@ -36,17 +36,29 @@ module.exports = (env, argv) => {
         {
           test: /\.(sa|sc|c)ss$/,
           use: [
-            MiniCssExtractPlugin.loader,
+            isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
             {
               loader: 'css-loader',
               options: {
-                sourceMap: isDevelopment
+                sourceMap: isDevelopment,
+                importLoaders: 2
               }
             },
             {
               loader: 'postcss-loader',
               options: {
-                sourceMap: isDevelopment
+                sourceMap: isDevelopment,
+                postcssOptions: {
+                  plugins: [
+                    require('autoprefixer'),
+                    require('postcss-preset-env')({
+                      stage: 3,
+                      features: {
+                        'nesting-rules': true
+                      }
+                    })
+                  ]
+                }
               }
             },
             {
@@ -75,29 +87,36 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new MiniCssExtractPlugin({
-        filename: '../../css/[name].css'
+        filename: '../css/[name].css'
       }),
       new BrowserSyncPlugin({
-        proxy: 'http://nanato-yellow.local', // Update this to match your local development URL
+        proxy: process.env.WP_HOME || 'http://localhost:10000', // Use environment variable or default
         files: [
           './**/*.php',
           './assets/js/dist/*.js',
           './assets/css/*.css'
         ],
         injectChanges: true,
-        notify: false
+        notify: false,
+        open: false
       })
     ],
     optimization: {
       minimizer: [
         new TerserPlugin({
-          extractComments: false
+          extractComments: false,
+          terserOptions: {
+            format: {
+              comments: false
+            }
+          }
         })
       ]
     },
-    devtool: isDevelopment ? 'source-map' : false,
+    devtool: isDevelopment ? 'eval-source-map' : false,
     stats: {
-      children: false
+      children: false,
+      modules: false
     },
     // Add support for WordPress externals
     externals: {

@@ -1,14 +1,19 @@
-// Base styles and utilities
-@use 'variables' as *;
-@use 'mixins' as *;
+// Variables and Mixins
+@import 'variables';
+@import 'mixins';
 
-// Import Bootstrap
-@import "~bootstrap/scss/bootstrap";
+// Base styles
+@import 'base';
 
-// Import components
-@import 'components/footer';
-@import 'components/header';
-@import 'components/navigation';
+// Components
+@import 'components/hero';
+@import 'components/cards-grid';
+@import 'components/cta';
 
-// Import block styles
-@import 'blocks';
+// Blocks
+@import 'blocks/hero';
+@import 'blocks/cards-grid';
+@import 'blocks/cta';
+
+// Utilities
+@import 'utilities';

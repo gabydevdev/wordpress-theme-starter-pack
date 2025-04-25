@@ -235,3 +235,58 @@ class WPTSP_Blocks {
 
 // Initialize blocks
 new WPTSP_Blocks();
+
+/**
+ * Register ACF Blocks
+ */
+
+function wptsp_register_acf_blocks() {
+    // Register Hero Block
+    acf_register_block_type(array(
+        'name'              => 'hero',
+        'title'             => __('Hero Section'),
+        'description'       => __('A custom hero section block.'),
+        'render_template'   => 'template-parts/flexible/hero.php',
+        'category'          => 'layout',
+        'icon'              => 'admin-comments',
+        'keywords'          => array('hero', 'banner', 'header'),
+        'supports'          => array(
+            'align' => true,
+            'mode' => false,
+            'jsx' => true
+        ),
+    ));
+
+    // Register Cards Grid Block
+    acf_register_block_type(array(
+        'name'              => 'cards-grid',
+        'title'             => __('Cards Grid'),
+        'description'       => __('A grid of cards block.'),
+        'render_template'   => 'template-parts/flexible/cards-grid.php',
+        'category'          => 'layout',
+        'icon'              => 'grid-view',
+        'keywords'          => array('cards', 'grid', 'layout'),
+        'supports'          => array(
+            'align' => true,
+            'mode' => false,
+            'jsx' => true
+        ),
+    ));
+
+    // Register CTA Block
+    acf_register_block_type(array(
+        'name'              => 'cta',
+        'title'             => __('Call to Action'),
+        'description'       => __('A call to action block.'),
+        'render_template'   => 'template-parts/flexible/cta.php',
+        'category'          => 'layout',
+        'icon'              => 'megaphone',
+        'keywords'          => array('cta', 'call to action', 'button'),
+        'supports'          => array(
+            'align' => true,
+            'mode' => false,
+            'jsx' => true
+        ),
+    ));
+}
+add_action('acf/init', 'wptsp_register_acf_blocks');
