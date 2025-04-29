@@ -77,16 +77,16 @@ function wptsp_posted_by() {
 function wptsp_entry_footer() {
     // Hide category and tag text for pages.
     if ('post' === get_post_type()) {
-        /* translators: used between list items, there is a space after the comma */
+        /* translators: %s: Category list */
         $categories_list = get_the_category_list(esc_html__(', ', 'wptsp'));
         if ($categories_list) {
-            printf('<span class="cat-links">' . esc_html__('Posted in %1$s', 'wptsp') . '</span>', $categories_list);
+            printf( esc_html__( 'Posted in %1$s', 'theme-textdomain' ), $categories_list );
         }
 
-        /* translators: used between list items, there is a space after the comma */
+        /* translators: %s: Tag list */
         $tags_list = get_the_tag_list('', esc_html_x(', ', 'list item separator', 'wptsp'));
         if ($tags_list) {
-            printf('<span class="tags-links">' . esc_html__('Tagged %1$s', 'wptsp') . '</span>', $tags_list);
+            printf( esc_html__( 'Tagged %1$s', 'theme-textdomain' ), $tags_list );
         }
     }
 
@@ -95,7 +95,8 @@ function wptsp_entry_footer() {
         comments_popup_link(
             sprintf(
                 wp_kses(
-                    __('Leave a Comment<span class="screen-reader-text"> on %s</span>', 'wptsp'),
+                    /* translators: %s: Post title */
+                    __('Leave a Comment<span class="screen-reader-text"> on %s</span>', 'theme-textdomain'),
                     array(
                         'span' => array(
                             'class' => array(),
@@ -111,7 +112,8 @@ function wptsp_entry_footer() {
     edit_post_link(
         sprintf(
             wp_kses(
-                __('Edit <span class="screen-reader-text">%s</span>', 'wptsp'),
+                /* translators: %s: Post title */
+                __('Edit <span class="screen-reader-text">%s</span>', 'theme-textdomain'),
                 array(
                     'span' => array(
                         'class' => array(),

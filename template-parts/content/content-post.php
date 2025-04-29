@@ -24,19 +24,8 @@
 
     <div class="entry-content">
         <?php
-        the_content(
-            sprintf(
-                wp_kses(
-                    __('Continue reading<span class="screen-reader-text"> "%s"</span>', 'wptsp'),
-                    array(
-                        'span' => array(
-                            'class' => array(),
-                        ),
-                    )
-                ),
-                wp_kses_post(get_the_title())
-            )
-        );
+        /* translators: %s: Post title */
+        printf( esc_html__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'theme-textdomain' ), get_the_title() );
 
         wp_link_pages(
             array(
