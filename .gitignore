@@ -49,7 +49,7 @@ php_error.log
 # Composer
 /vendor/
 composer.phar
-composer.json
+#composer.json
 composer.lock
 
 # PHP
