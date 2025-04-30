@@ -4,20 +4,18 @@
   "type": "wordpress-theme",
   "require": {
     "php": ">=7.4",
-    "wp-cli/wp-cli-bundle": "*"
+    "wp-cli/wp-cli-bundle": "*",
+    "composer/installers": "^2.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "^9.0",
-    "wp-coding-standards/wpcs": "^2.3",
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-    "yoast/phpunit-polyfills": "^1.0",
-    "brain/monkey": "^2.6"
+    "wp-coding-standards/wpcs": "^3.0",
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+    "phpcompatibility/phpcompatibility-wp": "*"
   },
   "scripts": {
-    "test": "phpunit",
-    "test:coverage": "phpunit --coverage-html coverage",
     "phpcs": "phpcs --standard=WordPress",
-    "phpcbf": "phpcbf --standard=WordPress"
+    "phpcbf": "phpcbf --standard=WordPress",
+    "check-php-compat": "phpcs --standard=PHPCompatibilityWP --runtime-set testVersion 7.4- --ignore=*/vendor/*,*/node_modules/* ."
   },
   "autoload": {
     "psr-4": {
@@ -26,7 +24,8 @@
   },
   "config": {
     "allow-plugins": {
-      "dealerdirect/phpcodesniffer-composer-installer": true
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "composer/installers": true
     }
   }
 }

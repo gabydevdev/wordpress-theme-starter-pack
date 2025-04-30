@@ -43,7 +43,6 @@ php_error.log
 .env.local
 .env.*.local
 .env.development
-.env.test
 .env.production
 
 # Composer
@@ -55,10 +54,6 @@ composer.lock
 # PHP
 .php_cs.cache
 .php_cs
-.phpunit.result.cache
-phpunit.xml
-phpcs.xml
-phpmd.xml
 .phpstorm.meta.php
 /_ide_helper.php
 /_ide_helper_models.php
