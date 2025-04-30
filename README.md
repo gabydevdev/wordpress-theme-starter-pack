@@ -12,7 +12,6 @@ A modern WordPress theme development starter pack with Webpack, SCSS, Bootstrap,
 - 📱 Responsive design ready
 - 🎨 Code formatting with Prettier
 - 🔍 ESLint and Stylelint integration
-- 🧪 PHPUnit testing setup
 - 🌐 Multilingual ready with .pot file
 - 🎯 Flexible content blocks system
 - 🔄 WP-Env support for local development
@@ -79,25 +78,45 @@ Before you begin, ensure you have the following installed:
 
 ```
 wptsp/
-├── assets/
-│   ├── css/          # Compiled CSS files
-│   ├── fonts/        # Custom fonts
-│   ├── images/       # Theme images and icons
+├── assets/                    # Theme assets
+│   ├── css/                   # Compiled CSS files (auto-generated)
+│   ├── fonts/                 # Custom web fonts
+│   ├── images/                # Theme images and icons
+│   │   └── icons/             # SVG icons and small graphics
 │   ├── js/
-│   │   └── src/      # JavaScript source files
-│   └── scss/         # SCSS source files
-│       ├── blocks/   # Block-specific styles
-│       └── components/# Component styles
-├── build/            # Production build files
-├── config/           # Build configuration files
-├── inc/              # Theme PHP includes
-├── languages/        # Translation files
-├── template-parts/   # Reusable template parts
-│   ├── content/      # Content templates
-│   └── flexible/     # Flexible content blocks
-├── tests/            # PHPUnit test files
-└── vendor/           # Composer dependencies
+│   │   └── src/               # JavaScript source files
+│   └── scss/                  # SCSS source files (7-1 pattern)
+│       ├── blocks/            # Block-specific styles
+│       ├── components/        # Reusable component styles
+│       ├── _variables.scss    # Global variables
+│       ├── _mixins.scss       # Custom mixins
+│       ├── editor.scss        # Gutenberg editor styles
+│       └── main.scss          # Main stylesheet
+├── build/                     # Production build files
+├── config/                    # Build configuration
+│   └── webpack.config.js      # Webpack configuration
+├── inc/                       # PHP includes
+│   ├── acf-field-groups.json  # ACF field configurations
+│   ├── acf.php                # ACF setup and functions
+│   ├── blocks.php             # Block registration and rendering
+│   ├── cpts.php               # Custom Post Types
+│   └── template-functions.php # Theme functions
+├── languages/                 # Internationalization
+├── template-parts/            # Template partials
+│   ├── content/               # Post type templates
+│   ├── flexible/              # ACF flexible content blocks
+│   ├── header-options.php
+│   └── footer-options.php
+├── composer.json              # PHP dependencies
+├── functions.php              # Theme functions and setup
+├── gulpfile.js                # Build automation tasks
+├── package.json               # Node.js dependencies
+├── style.css                  # Theme metadata
+├── theme.json                 # Theme settings and configuration
+└── wp-env.json                # Local development environment
 ```
+
+Note: The `css/` directory and build files are auto-generated. Never edit them directly; modify the source files in `scss/` and `js/src/` instead.
 
 ## Development Workflow
 
