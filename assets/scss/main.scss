@@ -1,19 +1,15 @@
-// Variables and Mixins
-@import 'variables';
-@import 'mixins';
+// Import our variables and mixins first
+@import "variables";
+@import "mixins";
 
-// Base styles
-@import 'base';
+// Import Bootstrap
+@import "~bootstrap/scss/bootstrap";
 
-// Components
-@import 'components/hero';
-@import 'components/cards-grid';
-@import 'components/cta';
+// Import components
+@import "components/header";
+@import "components/footer";
 
-// Blocks
-@import 'blocks/hero';
-@import 'blocks/cards-grid';
-@import 'blocks/cta';
-
-// Utilities
-@import 'utilities';
+// Import blocks
+@import "blocks/hero";
+@import "blocks/cards";
+@import "blocks/cta";

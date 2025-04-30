@@ -3,35 +3,32 @@
   "version": "1.0.0",
   "description": "WordPress Theme Starter Pack",
   "scripts": {
-    "dev": "webpack serve --mode development & gulp watch",
-    "build": "webpack --mode production && gulp build",
+    "dev": "wp-scripts start --webpack-src-dir=assets/js/src --config=./config/webpack.config.js & gulp watch",
+    "build": "wp-scripts build --webpack-src-dir=assets/js/src --config=./config/webpack.config.js && gulp build",
+    "format": "wp-scripts format",
+    "lint:js": "wp-scripts lint-js",
+    "lint:js:fix": "wp-scripts lint-js --fix",
+    "lint:css": "wp-scripts lint-style",
+    "lint:css:fix": "wp-scripts lint-style --fix",
     "zip": "gulp zip",
     "version": "gulp version-sync && conventional-changelog -p angular -i CHANGELOG.md -s && git add . && git commit -m 'chore: version bump'",
-    "lint:js": "eslint assets/js/src/**/*.js",
-    "lint:js:fix": "eslint assets/js/src/**/*.js --fix",
-    "lint:scss": "stylelint \"assets/scss/**/*.scss\"",
-    "lint:scss:fix": "stylelint \"assets/scss/**/*.scss\" --fix",
+    "packages-update": "wp-scripts packages-update",
     "generate-pot": "wp i18n make-pot . languages/theme-textdomain.pot --exclude=vendor,node_modules"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.10",
-    "@babel/preset-env": "^7.26.9",
-    "@wordpress/eslint-plugin": "^22.8.0",
-    "babel-loader": "^10.0.0",
+    "@wordpress/babel-preset-default": "^7.37.0",
+    "@wordpress/block-editor": "^12.19.0",
+    "@wordpress/blocks": "^12.27.0",
+    "@wordpress/components": "^25.14.0",
+    "@wordpress/i18n": "^4.48.0",
+    "@wordpress/scripts": "^30.15.0",
     "browser-sync": "^3.0.4",
     "conventional-changelog-cli": "^5.0.0",
-    "css-loader": "^7.1.2",
-    "eslint": "^9.25.1",
     "gulp": "^5.0.0",
     "gulp-imagemin": "^9.1.0",
-    "gulp-zip": "^6.1.0",
-    "mini-css-extract-plugin": "^2.9.2",
-    "sass": "^1.87.0",
-    "sass-loader": "^16.0.5",
-    "style-loader": "^4.0.0",
-    "stylelint": "^16.19.1",
-    "webpack": "^5.99.7",
-    "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.1"
+    "gulp-zip": "^6.1.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.5"
   }
 }

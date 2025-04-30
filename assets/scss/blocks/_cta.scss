@@ -1,47 +1,31 @@
-@use '../variables' as *;
-@use '../mixins' as *;
-@import 'block-options';
+@import "../variables";
 
-.wptsp-cta {
-  @extend %block-base;
+.cta {
   padding: $section-spacing 0;
-
-  &__container {
-    display: flex;
-    flex-direction: column;
-    gap: $spacer * 2;
-  }
+  background-color: $primary;
+  color: $white;
 
   &__content {
-    flex: 1;
-  }
-
-  &__title {
-    margin-bottom: $spacer;
-  }
-
-  &__buttons {
-    display: flex;
-    gap: $spacer;
-    flex-wrap: wrap;
-  }
-
-  // Modifiers
-  &--centered {
     text-align: center;
 
-    .wptsp-cta__buttons {
-      justify-content: center;
+    @include media-breakpoint-up(md) {
+      max-width: 60%;
+      margin: 0 auto;
     }
   }
 
-  &--split {
-    @include media-breakpoint-up(md) {
-      .wptsp-cta__container {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-      }
+  &__title {
+    margin-bottom: $spacer * 2;
+  }
+
+  &__description {
+    margin-bottom: $spacer * 2;
+    opacity: 0.9;
+  }
+
+  .btn-outline-light {
+    &:hover {
+      color: $primary;
     }
   }
 }

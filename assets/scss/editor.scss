@@ -1,43 +1,24 @@
-// Import base styles and variables
-@use "variables" as *;
-@use "mixins" as *;
+// Import our variables and mixins first
+@import "variables";
+@import "mixins";
 
-// Editor-specific styles
+// Import Bootstrap required parts
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/variables-dark";
+@import "~bootstrap/scss/mixins";
+
+// Add editor-specific styles here
 .editor-styles-wrapper {
-  // Typography
-  font-family: $font-family-base;
-  color: $secondary;
 
-  h1, h2, h3, h4, h5, h6 {
-    color: $primary;
-    margin-bottom: $spacer;
-  }
-
-  // Block styles
+  // Ensure proper spacing in the editor
   .wp-block {
-    max-width: 1200px;
-  }
-
-  // Custom block styles
-  .wp-block-wptsp-hero {
-    padding: $section-spacing 0;
-    background-size: cover;
-    background-position: center;
-    color: #fff;
-
-    &__content {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-  }
-
-  // Block toolbar and inspector panel customizations
-  .block-editor-block-toolbar {
-    border-color: rgba($primary, 0.2);
-  }
-
-  .components-panel__body {
-    border-color: rgba($primary, 0.1);
+    max-width: $container-max-width;
+    margin: 0 auto;
   }
 }
+
+// Import blocks for editor styles
+@import "blocks/hero";
+@import "blocks/cards";
+@import "blocks/cta";

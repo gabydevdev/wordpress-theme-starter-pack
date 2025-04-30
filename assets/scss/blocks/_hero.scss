@@ -1,17 +1,15 @@
-@use '../variables' as *;
-@use '../mixins' as *;
-@import 'block-options';
+@import "../variables";
+@import "../mixins";
 
-.wptsp-hero {
-  @extend %block-base;
-  padding: $section-spacing 0;
-  background-size: cover;
-  background-position: center;
+.hero {
   position: relative;
+  padding: $section-spacing 0;
+  background-color: $light;
 
-  &__container {
-    position: relative;
-    z-index: 2;
+  &__content {
+    @include media-breakpoint-up(md) {
+      max-width: 60%;
+    }
   }
 
   &__title {
@@ -19,14 +17,6 @@
   }
 
   &__description {
-    margin-bottom: $spacer * 3;
-    font-size: $font-size-lg;
-  }
-
-  &__buttons {
-    display: flex;
-    gap: $spacer;
-    justify-content: var(--align, center);
-    flex-wrap: wrap;
+    margin-bottom: $spacer * 1.5;
   }
 }

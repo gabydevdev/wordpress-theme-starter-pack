@@ -1,8 +1,7 @@
 /**
- * WordPress editor customizations
+ * Editor scripts
  */
-import './editor/blocks';
-import './editor/formats';
+import "./editor/formats";
 
 // Editor styles
-import '../scss/editor.scss';
+import "@scss/editor.scss";
