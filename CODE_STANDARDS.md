@@ -1,4 +1,4 @@
-# Code Standards for WPTSP
+# WordPress Theme Starter Pack - Code Standards
 
 This document outlines the coding standards we adhere to in the `wptsp` WordPress theme starter pack. Following these standards ensures consistency, readability, and maintainability across the codebase.
 
@@ -59,7 +59,7 @@ This document outlines the coding standards we adhere to in the `wptsp` WordPres
 
   ```javascript
   //  Single-line comment
-  const wptspVariable = 'value';
+  const wptspVariable = "value";
 
   /**
    * Multi-line comment
